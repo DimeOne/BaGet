@@ -57,7 +57,8 @@ namespace BaGet.Core
                 .Include(p => p.Dependencies)
                 .Include(p => p.PackageTypes)
                 .Include(p => p.TargetFrameworks)
-                .Where(p => p.Id == id);
+                .Where(p => p.Id == id)
+                .AsSplitQuery();
 
             if (!includeUnlisted)
             {
@@ -77,7 +78,8 @@ namespace BaGet.Core
                 .Include(p => p.Dependencies)
                 .Include(p => p.TargetFrameworks)
                 .Where(p => p.Id == id)
-                .Where(p => p.NormalizedVersionString == version.ToNormalizedString());
+                .Where(p => p.NormalizedVersionString == version.ToNormalizedString())
+                .AsSplitQuery();
 
             if (!includeUnlisted)
             {
